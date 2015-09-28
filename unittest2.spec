@@ -4,7 +4,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 19
+Release  : 20
 URL      : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Summary  : The new features in unittest backported to Python 2.4+.
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: unittest2-bin
 Requires: unittest2-python
+BuildRequires : argparse-python
 BuildRequires : linecache2-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -38,6 +39,8 @@ bin components for the unittest2 package.
 %package python
 Summary: python components for the unittest2 package.
 Group: Default
+Requires: argparse-python
+Requires: traceback2-python
 
 %description python
 python components for the unittest2 package.
@@ -58,8 +61,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 python2 setup.py test || :
 %install
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot}
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
