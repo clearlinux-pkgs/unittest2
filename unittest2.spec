@@ -4,7 +4,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 27
+Release  : 28
 URL      : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Summary  : The new features in unittest backported to Python 2.4+.
