@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 31
+Release  : 32
 URL      : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source99 : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz.asc
@@ -15,6 +15,9 @@ Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: unittest2-bin
 Requires: unittest2-python
+Requires: argparse
+Requires: six
+Requires: traceback2
 BuildRequires : argparse-python
 BuildRequires : linecache2-python
 BuildRequires : pbr
@@ -42,8 +45,6 @@ bin components for the unittest2 package.
 %package python
 Summary: python components for the unittest2 package.
 Group: Default
-Requires: argparse-python
-Requires: traceback2-python
 
 %description python
 python components for the unittest2 package.
@@ -55,7 +56,7 @@ python components for the unittest2 package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1484582141
+export SOURCE_DATE_EPOCH=1489769682
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -63,9 +64,9 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1484582141
+export SOURCE_DATE_EPOCH=1489769682
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -79,4 +80,5 @@ python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
