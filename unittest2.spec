@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 32
+Release  : 33
 URL      : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz
 Source99 : https://pypi.python.org/packages/source/u/unittest2/unittest2-1.1.0.tar.gz.asc
