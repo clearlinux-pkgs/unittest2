@@ -2,4 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 python3-dev
 six
-argparse-python
+argparse
