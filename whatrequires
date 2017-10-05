@@ -77,14 +77,12 @@ boto3
 botocore
 bz2file
 cairo
-cc-oci-runtime
 ceph
 certifi
 cffi
 chardet
 cheese
 chrome-gnome-shell
-ciao-webui
 click
 clutter
 clutter-gst
@@ -162,7 +160,6 @@ gnome-backgrounds
 gnome-bluetooth
 gnome-calendar
 gnome-desktop
-gnome-doc-utils
 gnome-font-viewer
 gnome-online-accounts
 gnome-panel
