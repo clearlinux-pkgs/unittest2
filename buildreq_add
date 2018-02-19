@@ -3,3 +3,5 @@
 python3-dev
 six
 argparse
+traceback2-legacypython
+linecache2-legacypython
