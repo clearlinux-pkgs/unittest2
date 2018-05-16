@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source99 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : The new features in unittest backported to Python 2.4+.
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: unittest2-bin
+Requires: unittest2-legacypython
 Requires: unittest2-python3
 Requires: unittest2-python
 Requires: argparse
@@ -28,6 +29,7 @@ BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : six
+BuildRequires : six-legacypython
 BuildRequires : traceback2-legacypython
 BuildRequires : traceback2-python
 Patch1: remove-argparse-from-requires.patch
@@ -85,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519049905
+export SOURCE_DATE_EPOCH=1526500047
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -95,7 +97,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1519049905
+export SOURCE_DATE_EPOCH=1526500047
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
