@@ -6,3 +6,4 @@ six-legacypython
 argparse
 traceback2-legacypython
 linecache2-legacypython
+setuptools-legacypython
