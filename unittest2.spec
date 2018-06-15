@@ -24,7 +24,7 @@ BuildRequires : linecache2-legacypython
 BuildRequires : linecache2-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
