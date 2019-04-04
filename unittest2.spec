@@ -6,42 +6,31 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 59
+Release  : 60
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source99 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
 Summary  : The new features in unittest backported to Python 2.4+.
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: unittest2-bin
-Requires: unittest2-python3
-Requires: unittest2-python
+Requires: unittest2-bin = %{version}-%{release}
+Requires: unittest2-python = %{version}-%{release}
+Requires: unittest2-python3 = %{version}-%{release}
 Requires: argparse
 Requires: six
 Requires: traceback2
 BuildRequires : argparse
-BuildRequires : linecache2-legacypython
+BuildRequires : buildreq-distutils3
 BuildRequires : linecache2-python
-BuildRequires : pbr
-BuildRequires : pip
-
 BuildRequires : python3-dev
-BuildRequires : setuptools
-BuildRequires : setuptools-legacypython
 BuildRequires : six
-BuildRequires : six-legacypython
-BuildRequires : traceback2-legacypython
 BuildRequires : traceback2-python
 Patch1: remove-argparse-from-requires.patch
 
 %description
+unittest2 is a backport of the new features added to the unittest testing
 framework in Python 2.7 and onwards. It is tested to run on Python 2.6, 2.7,
-        3.2, 3.3, 3.4 and pypy.
-        
-        To use unittest2 instead of unittest simply replace ``import unittest`` with
-        ``import unittest2``.
-        
-        unittest2 is maintained in a mercurial repository. The issue tracker is on
+3.2, 3.3, 3.4 and pypy.
 
 %package bin
 Summary: bin components for the unittest2 package.
@@ -51,19 +40,10 @@ Group: Binaries
 bin components for the unittest2 package.
 
 
-%package legacypython
-Summary: legacypython components for the unittest2 package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the unittest2 package.
-
-
 %package python
 Summary: python components for the unittest2 package.
 Group: Default
-Requires: unittest2-python3
+Requires: unittest2-python3 = %{version}-%{release}
 
 %description python
 python components for the unittest2 package.
@@ -87,20 +67,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528562183
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1554336189
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1528562183
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -111,10 +90,6 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/unit2
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)

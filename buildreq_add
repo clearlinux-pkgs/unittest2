@@ -2,8 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 python3-dev
 six
-six-legacypython
 argparse
-traceback2-legacypython
-linecache2-legacypython
-setuptools-legacypython
