@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 61
+Release  : 62
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source99 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
