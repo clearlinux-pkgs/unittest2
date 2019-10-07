@@ -1,13 +1,13 @@
 # This file contains recursive sources that require this package
 amqp
-cssselect
+contextlib2
 deprecated-funcsigs
 deprecated-traceback2
 funcsigs
-gabbi
 kombu
 linecache2
 pytest
+tempest
 testrepository
 testtools
 traceback2

@@ -6,31 +6,34 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 62
+Release  : 63
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
-Source99 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
+Source1 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
 Summary  : The new features in unittest backported to Python 2.4+.
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: unittest2-bin = %{version}-%{release}
 Requires: unittest2-python = %{version}-%{release}
 Requires: unittest2-python3 = %{version}-%{release}
-Requires: argparse
 Requires: six
 Requires: traceback2
-BuildRequires : argparse
 BuildRequires : buildreq-distutils3
 BuildRequires : linecache2-python
 BuildRequires : python3-dev
 BuildRequires : six
+BuildRequires : traceback2
 BuildRequires : traceback2-python
 Patch1: remove-argparse-from-requires.patch
 
 %description
-unittest2 is a backport of the new features added to the unittest testing
 framework in Python 2.7 and onwards. It is tested to run on Python 2.6, 2.7,
-3.2, 3.3, 3.4 and pypy.
+        3.2, 3.3, 3.4 and pypy.
+        
+        To use unittest2 instead of unittest simply replace ``import unittest`` with
+        ``import unittest2``.
+        
+        unittest2 is maintained in a mercurial repository. The issue tracker is on
 
 %package bin
 Summary: bin components for the unittest2 package.
@@ -66,8 +69,13 @@ python3 components for the unittest2 package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554336189
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570481899
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
