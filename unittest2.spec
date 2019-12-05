@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 64
+Release  : 65
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source1 : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
@@ -27,13 +27,9 @@ BuildRequires : traceback2-python
 Patch1: remove-argparse-from-requires.patch
 
 %description
+unittest2 is a backport of the new features added to the unittest testing
 framework in Python 2.7 and onwards. It is tested to run on Python 2.6, 2.7,
-        3.2, 3.3, 3.4 and pypy.
-        
-        To use unittest2 instead of unittest simply replace ``import unittest`` with
-        ``import unittest2``.
-        
-        unittest2 is maintained in a mercurial repository. The issue tracker is on
+3.2, 3.3, 3.4 and pypy.
 
 %package bin
 Summary: bin components for the unittest2 package.
@@ -63,6 +59,7 @@ python3 components for the unittest2 package.
 
 %prep
 %setup -q -n unittest2-1.1.0
+cd %{_builddir}/unittest2-1.1.0
 %patch1 -p1
 
 %build
@@ -70,7 +67,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570481899
+export SOURCE_DATE_EPOCH=1575554101
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -83,7 +81,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}

@@ -1,8 +1,6 @@
 # This file contains recursive sources that require this package
 amqp
 contextlib2
-deprecated-funcsigs
-deprecated-traceback2
 funcsigs
 kombu
 linecache2
