@@ -1,13 +1,8 @@
 # This file contains recursive sources that require this package
-amqp
-case
 contextlib2
 funcsigs
-kombu
 linecache2
 pytest
-tempest
 testrepository
 testtools
 traceback2
-weakrefmethod
