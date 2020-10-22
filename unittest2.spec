@@ -6,7 +6,7 @@
 #
 Name     : unittest2
 Version  : 1.1.0
-Release  : 69
+Release  : 70
 URL      : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source0  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz
 Source1  : http://pypi.debian.net/unittest2/unittest2-1.1.0.tar.gz.asc
@@ -57,7 +57,6 @@ Summary: python3 components for the unittest2 package.
 Group: Default
 Requires: python3-core
 Provides: pypi(unittest2)
-Requires: pypi(argparse)
 Requires: pypi(six)
 Requires: pypi(traceback2)
 
@@ -75,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603407217
+export SOURCE_DATE_EPOCH=1603410789
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
